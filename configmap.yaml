@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-oldversionpoc
+data:
+  application.yml: |-
+    welcome:
+      message: Hello from kubernetes propety source from default message for 1.5
+      message2: Hello from kubernetes propety source from default message1 for 1.5
+    ---
+    spring:
+      profiles: dev
+    welcome:
+      message1: Hello from kubernetes propety source from DEV for 1.5
+    ---
+    spring:
+      profiles: prod
+    welcome:
+      message1: Hello from kubernetes propety source from PROD for 1.5

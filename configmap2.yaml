@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-configmap-oldversionpoc2
+data:
+  application.properties: |-
+    welcome.message=Hello the property is from kubernetes cluster from config map 2
+    welcome.samplemessage=Hello the property is from kubernetes cluster from config map 2 sample messsage
+    message=Hi from kubernetes Aparna

@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    kubernetes:
+      config:
+        enabled: true
+        sources:
+          - namespace: default
+            name: configmap-oldversionpoc
+          - namespace: default
+            name: configmap-oldversionpocpoc2
+      reload:
+        enabled: true
+        mode: event
+        strategy: refresh
+management:
+  endpoint:
+    restart:      enabled: true
