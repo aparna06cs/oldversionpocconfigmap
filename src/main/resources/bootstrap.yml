@@ -20,3 +20,4 @@ management:
       exposure:
         include: info,refresh,keepalive,health,env,beans
   security:    enabled: false
+endpoints:  restart:    enabled: true
