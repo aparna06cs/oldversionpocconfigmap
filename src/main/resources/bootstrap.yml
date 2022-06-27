@@ -12,12 +12,11 @@ spring:
         enabled: true
         mode: event
         strategy: refresh
-management:
-  endpoint:
-    restart:      enabled: true
+endpoints:
+  restart:
+    enabled: true
   endpoints:
     web:
       exposure:
         include: info,refresh,keepalive,health,env,beans
   security:    enabled: false
-endpoints:  restart:    enabled: true
