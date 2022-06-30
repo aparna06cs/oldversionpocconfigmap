@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  *
  */
 @ConfigurationProperties(prefix = "spring.cloud.kubernetes.reload")
-@Component
+@Configuration
 public class NewConfigReloadProperties  {
 
 
