@@ -12,6 +12,4 @@ spring:
         strategy: refresh
 endpoints:
   restart:
-    enabled: true  refresh:    enabled: true
-  info:    enabled: true
-  env:    enabled: true
+    enabled: true
