@@ -10,7 +10,6 @@ spring:
         enabled: true
         mode: event
         strategy: refresh
-        monitoringConfigMaps: true
 endpoints:
   restart:
     enabled: true  refresh:    enabled: true
