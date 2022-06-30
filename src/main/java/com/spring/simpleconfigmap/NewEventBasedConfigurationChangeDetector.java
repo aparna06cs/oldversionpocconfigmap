@@ -10,8 +10,6 @@ import org.springframework.cloud.kubernetes.config.ConfigMapPropertySource;
 import org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator;
 import org.springframework.cloud.kubernetes.config.SecretsPropertySource;
 import org.springframework.cloud.kubernetes.config.SecretsPropertySourceLocator;
-import org.springframework.cloud.kubernetes.config.reload.ConfigReloadProperties;
-import org.springframework.cloud.kubernetes.config.reload.ConfigurationChangeDetector;
 import org.springframework.cloud.kubernetes.config.reload.ConfigurationUpdateStrategy;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.AbstractEnvironment;
@@ -29,7 +27,7 @@ import io.fabric8.kubernetes.client.Watcher;
  *
  */
 @Configuration
-public class NewEventBasedConfigurationChangeDetector extends ConfigurationChangeDetector {
+public class NewEventBasedConfigurationChangeDetector extends NewConfigurationChangeDetector {
 
 
 	private ConfigMapPropertySourceLocator configMapPropertySourceLocator;
@@ -39,7 +37,7 @@ public class NewEventBasedConfigurationChangeDetector extends ConfigurationChang
 	private Map<String, Watch> watches;
 
 	public NewEventBasedConfigurationChangeDetector(AbstractEnvironment environment,
-			ConfigReloadProperties properties, KubernetesClient kubernetesClient,
+			NewConfigReloadProperties properties, KubernetesClient kubernetesClient,
 			ConfigurationUpdateStrategy strategy,
 			ConfigMapPropertySourceLocator configMapPropertySourceLocator,
 			SecretsPropertySourceLocator secretsPropertySourceLocator) {
