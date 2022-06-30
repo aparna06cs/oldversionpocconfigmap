@@ -15,4 +15,4 @@ spring:
         monitoring-config-maps: true
 endpoints:
   restart:
-    enabled: true
+    enabled: true  refresh:    enabled: true
