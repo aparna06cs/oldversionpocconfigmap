@@ -5,7 +5,9 @@ spring:
         enabled: true
         sources:
           - namespace: default
-            name: configmap-oldversionpoc
+            name: configmap-common-dev
+          - namespace: default
+            name: configmap-cart
       reload:
         enabled: true
         mode: event
