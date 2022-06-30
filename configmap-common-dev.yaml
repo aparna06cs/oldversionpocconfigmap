@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-common-dev
+data:
+  application.yml: |-
+    cart:
+      success: property from cluster in the common config from spring boot 1.5 success
+      failure: property from cluster in the common config from spring boot 1.5 fail
+      success1: property from cluster in the common config from spring boot 1.5 success one
+      failure1: property from cluster in the common config from spring boot 1.5 fail one
+    success: property from cluster in the common config from spring boot 1.5 success without cart prefix
+    failure: property from cluster in the common config from spring boot 1.5 fail without cart prefix
+    success1: property from cluster in the common config from spring boot 1.5 success without cart prefix one
+    failure1: property from cluster in the common config from spring boot 1.5 fail without cart prefix one

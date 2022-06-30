@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-cart
+data:
+  application.properties: |-
+    cart.success=property from cluster from spring boot 1.5 version success message
+    success=property from cluster from spring boot 1.5 version without cart prefix
+    cart.failure=property from cluster from spring boot 1.5 version fail message
+    failure=property from cluster from spring boot 1.5 version without cart prefix failure
