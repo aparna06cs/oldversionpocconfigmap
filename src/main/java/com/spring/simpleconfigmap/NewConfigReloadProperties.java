@@ -4,6 +4,7 @@ import java.time.Duration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 /**
  * This method is used to load the config reload properties
@@ -11,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  *
  */
 @ConfigurationProperties(prefix = "spring.cloud.kubernetes.reload")
-@Configuration
+@Component
 public class NewConfigReloadProperties  {
 
 
