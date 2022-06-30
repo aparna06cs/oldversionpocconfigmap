@@ -2,11 +2,7 @@ package com.spring.simpleconfigmap;
 
 import java.util.Objects;
 
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
 public class NewConfigurationUpdateStrategy {
-
 
 	private String name;
 
