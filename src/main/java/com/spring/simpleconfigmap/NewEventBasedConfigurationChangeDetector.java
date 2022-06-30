@@ -10,7 +10,6 @@ import org.springframework.cloud.kubernetes.config.ConfigMapPropertySource;
 import org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator;
 import org.springframework.cloud.kubernetes.config.SecretsPropertySource;
 import org.springframework.cloud.kubernetes.config.SecretsPropertySourceLocator;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.AbstractEnvironment;
 
 import io.fabric8.kubernetes.api.model.ConfigMap;
@@ -25,7 +24,6 @@ import io.fabric8.kubernetes.client.Watcher;
  * @author apaperic
  *
  */
-@Configuration
 public class NewEventBasedConfigurationChangeDetector extends NewConfigurationChangeDetector {
 
 
