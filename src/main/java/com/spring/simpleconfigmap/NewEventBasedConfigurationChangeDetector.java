@@ -10,7 +10,6 @@ import org.springframework.cloud.kubernetes.config.ConfigMapPropertySource;
 import org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator;
 import org.springframework.cloud.kubernetes.config.SecretsPropertySource;
 import org.springframework.cloud.kubernetes.config.SecretsPropertySourceLocator;
-import org.springframework.cloud.kubernetes.config.reload.ConfigurationUpdateStrategy;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.AbstractEnvironment;
 
@@ -38,7 +37,7 @@ public class NewEventBasedConfigurationChangeDetector extends NewConfigurationCh
 
 	public NewEventBasedConfigurationChangeDetector(AbstractEnvironment environment,
 			NewConfigReloadProperties properties, KubernetesClient kubernetesClient,
-			ConfigurationUpdateStrategy strategy,
+			NewConfigurationUpdateStrategy strategy,
 			ConfigMapPropertySourceLocator configMapPropertySourceLocator,
 			SecretsPropertySourceLocator secretsPropertySourceLocator) {
 		super(environment, properties, kubernetesClient, strategy);

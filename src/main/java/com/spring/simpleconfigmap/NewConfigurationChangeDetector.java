@@ -11,7 +11,6 @@ import javax.annotation.PreDestroy;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.cloud.bootstrap.config.PropertySourceLocator;
-import org.springframework.cloud.kubernetes.config.reload.ConfigurationUpdateStrategy;
 import org.springframework.core.env.CompositePropertySource;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.Environment;
@@ -31,11 +30,11 @@ public abstract class NewConfigurationChangeDetector {
 
 	protected KubernetesClient kubernetesClient;
 
-	protected ConfigurationUpdateStrategy strategy;
+	protected NewConfigurationUpdateStrategy strategy;
 
 	public NewConfigurationChangeDetector(ConfigurableEnvironment environment,
 			NewConfigReloadProperties properties, KubernetesClient kubernetesClient,
-			ConfigurationUpdateStrategy strategy) {
+			NewConfigurationUpdateStrategy strategy) {
 		this.environment = environment;
 		this.properties = properties;
 		this.kubernetesClient = kubernetesClient;
