@@ -3,6 +3,7 @@ package com.spring.simpleconfigmap;
 import java.time.Duration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * This method is used to load the config reload properties
@@ -10,6 +11,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  *
  */
 @ConfigurationProperties(prefix = "spring.cloud.kubernetes.reload")
+@Configuration
 public class NewConfigReloadProperties  {
 
 
