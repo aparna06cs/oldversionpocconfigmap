@@ -3,7 +3,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: default
-  name: role-api-reader3
+  name: role-api-reader4
 rules:
   - apiGroups: [""] # "" indicates the core API group
     resources: ["pods","configmaps"]
@@ -13,7 +13,7 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: rolebinding-api-reader3
+  name: rolebinding-api-reader4
   namespace: default
 subjects:
   - kind: ServiceAccount
@@ -21,5 +21,5 @@ subjects:
     namespace: default
 roleRef:
   kind: Role #this must be Role or ClusterRole
-  name: role-api-reader3 # this must match the name of the Role or ClusterRole you wish to bind to
+  name: role-api-reader4 # this must match the name of the Role or ClusterRole you wish to bind to
   apiGroup: rbac.authorization.k8s.io
