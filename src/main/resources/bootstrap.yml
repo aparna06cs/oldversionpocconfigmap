@@ -1,6 +1,7 @@
 spring:
   cloud:
     kubernetes:
+      enabled: true
       config:
         enabled: true
         sources:
