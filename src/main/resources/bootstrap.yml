@@ -12,8 +12,9 @@ spring:
       reload:
         enabled: true
         mode: event
-        strategy: refresh
+        strategy: refresh        
 management:
   endpoint:
     restart:
       enabled: true
+endpoints:  restart:    enabled: true
