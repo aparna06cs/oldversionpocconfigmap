@@ -37,7 +37,6 @@ public class NewConfigAutoReload {
 	 * Configuration reload must be enabled explicitly.
 	 */
 	@ConditionalOnProperty(value = "spring.cloud.kubernetes.reload.enabled")
-	@ConditionalOnClass({ RestartEndpoint.class, ContextRefresher.class })
 	@EnableScheduling
 	@EnableAsync
 	protected static class ConfigReloadAutoConfigurationBeans {
