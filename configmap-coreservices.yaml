@@ -20,3 +20,4 @@ data:
         mandatoryRoutes = {'planogramgetItemStoreDetails':'planogramgetItemStoreDetails'}
         validateSuccessfulResponse = planogramgetItemStoreDetails
         planogram.api.endpoint=http://apiaso.academy.com/merchplanning/poglocations/v1
+        firestore.credentials=academy-firestore-nonprod.json
