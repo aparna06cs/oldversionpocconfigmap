@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-coreservices
+data:
+  application.properties: |-
+        swagger.api.url.pattern=/api/coreservices*/.*|/api/coreservices
+        swagger.api.title=Academy Digital Platform - coreservices API
+        swagger.api.description=Academy Digital Platform
+        swagger.api.terms.url=http://www.academy.com
+        swagger.api.contact=Academy
+        swagger.api.licence=Apache License Version 2.0
+        swagger.api.licence.url=https://github.com/springfox/springfox/blob/master/LICENSE
+        swagger.api.version=2.0
+        springfox.documentation.swagger.v2.path=/api/coreservices/v2/api-docs
+        specMap={'planogramgetItemStoreDetails':'planogramgetItemStoreDetails.json'}
+        apiResponseNames={'planogramgetItemStoreDetails':'planogramgetItemStoreDetails'}
+        camelRoutes={'planogramgetItemStoreDetails':'direct:planogramgetItemStoreDetails'}
+        routeBuilder = {'direct\:planogramgetItemStoreDetails':'POST'}
+        mandatoryRoutes = {'planogramgetItemStoreDetails':'planogramgetItemStoreDetails'}
+        validateSuccessfulResponse = planogramgetItemStoreDetails
+        planogram.api.endpoint=http://apiaso.academy.com/merchplanning/poglocations/v1

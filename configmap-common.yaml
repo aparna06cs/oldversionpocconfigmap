@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-common
+data:
+  application.properties: |-
+      api.service.host=https://uat5www.academy.com
+      algolia.env=uat5live
+      algolia.env.preview=uat5stg
+      wcs.endpoint.livehost=uat5int.academy.com
