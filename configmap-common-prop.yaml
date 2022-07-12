@@ -4,7 +4,7 @@ metadata:
   name: configmap-common-prop
 data:
   application.properties: |-
-     algolia.env=uat5live
+            algolia.env=uat5live
             algolia.env.preview=uat5stg
             wcs.endpoint.livehost=uat5int.academy.com
             endpointsMap.categoryBreadcrumb=https://${wcs.endpoint.livehost}/wcs/resources/store/10151/xcategoryview/byCategoryIds?categoryId=#pp#&profileIdentifier=X_Category_findBreadCrumbByCategoryIds
@@ -296,3 +296,263 @@ data:
             server.camel.http.default.connectionRequestTimeout=10000
             server.camel.http.default.connectTimeout=1000
             server.camel.http.api.soTimeout = {'productsummary':'8000','productinfos':'8000','productinfo':'8000','inventory':'6000','addToCart':'10000','store':'8000','minicart':'5000','queryWishlist':'5000','applyPLCCCard':'26000','bopisRealtime':'12000','placeOrder':'25000','buyNow':'25000','addShippingAddress':'20000','updateShippingAddress':'20000','availableshippingmode':'20000','getshipppingmethod':'20000','fetchShipModesAndAssociatedItems':'20000','checkoutShippingRestrictions':'20000','taxDetails':'8000','backUpCart':'8000','orderSignaturePreference':'8000','orderSignBoxDisplayEligibility':'8000','placeApplePayExpressOrder':'25000','placeApplePayOrder':'25000','placeGooglePayOrder':'25000','placeKlarnaOrder':'25000','placeGooglePayExpressOrder':'25000'}
+
+            # apiConnectRequestTimeoutMap - Connect request timeout for HTTP camel routes (milli seconds) - Fall back is default if it is not set.
+            server.camel.http.api.connectRequestTimeout = {'productsummary':'8000','productinfos':'8000','productinfo':'8000','inventory':'6000','addToCart':'10000','store':'8000','minicart':'5000','queryWishlist':'5000','applyPLCCCard':'26000','bopisRealtime':'12000','placeOrder':'25000','buyNow':'25000','addShippingAddress':'20000','updateShippingAddress':'20000','availableshippingmode':'20000','getshipppingmethod':'20000','fetchShipModesAndAssociatedItems':'20000','checkoutShippingRestrictions':'20000','taxDetails':'2000','backUpCart':'8000','orderSignaturePreference':'8000','orderSignBoxDisplayEligibility':'8000','addpromocode':'1'}
+
+            # apiSocketTimeoutMap - Socket timeout for HTTP camel routes (milli seconds) - Fall back is default if it is not set.
+            server.camel.http.api.checkoutNextgen.soTimeout = {'loginIdentity':'6000','userStatus':'2000','validateAddress':'2000','userDetails':'2000'}
+
+            # apiConnectRequestTimeoutMap - Connect request timeout for HTTP camel routes (milli seconds) - Fall back is default if it is not set.
+            server.camel.http.api.checkoutNextgen.connectRequestTimeout = {'loginIdentity':'1000','userStatus':'1000','validateAddress':'1000','userDetails':'1000'}
+
+            # apiConnectRequestTimeoutMap - Socket connect timeout for HTTP camel routes (milli seconds) - Fall back is default if it is not set.
+            server.camel.http.api.checkoutNextgen.connectTimeout = {'loginIdentity':'1000','userStatus':'1000','validateAddress':'1000','userDetails':'1000'}
+
+            #Disable default Cache-Control header 
+            #security.headers.cache=false
+
+
+            suppressExceptionRoutes=direct:minicart,direct:queryWishlist,direct:minicartNew
+
+            isExcludeCookie=true
+
+            cookieExcludeApiList={"session","backInStock","product", "search", "siteSearch", "autoSuggest", "siteContent", "productSuggest", "siteSearchQuery", "store", "stores", "productinfo", "productinfos", "productinfoSummary", "estimatedShipping", "productinfoRealtime", "bopis_cache", "bopisRealtime", "inventoryRealtime"}
+
+            cookieExclusionValueList={"USERACTIVITY","WC_USERACTIVITY_","WC_","recentSearches","RT="}
+
+            errorMsgMap={DETAIL_NOT_FOUND:'Details could not be found'}
+
+
+
+            feign.httpclient.maxConnections=200
+            feign.httpclient.connectionTimeout=20000
+            feign.client.readTimeout=20000
+
+            aso.camelContext.enableCamelConfig=false
+            aso.camelContext.disableJMX=true
+            aso.camelContext.maximumCachePoolSize=50
+            aso.camelContext.maximumEndpointCacheSize=50
+
+
+            server.camelContext.http.connectionTimeToLive=-1
+
+            camel.enableCamelDirectHTTP=false
+            camel.enableCustomHTTPConnectionPool=true
+
+            #adding the agile mocking
+            agile.mock.enable=false
+
+            #adding the Inventory reservation mocking
+            inventory.reservation.mock.enable=false
+
+            #cookie secure flag
+            cookie.isSecure = true
+            #cloud datastore 
+            enableCloudDataStore=true
+            cloudDataStoreNamespace=DEV-A
+            aso.prometheus.interceptor.enabled=false
+
+            #Apple pay config
+            wallet.applepay.merchantIdentifier=merchant.com.academyuat
+            wallet.applepay.merchantIdentifierPerf=merchant.com.academyuat
+            wallet.applepay.displayName=Academy Sports and Outdoors Store
+            wallet.applepay.initiative=web
+            wallet.applepay.certName=apple-pay
+            wallet.applepay.certPassword=KJ1392ab#
+
+            #Google recaptcha implementation
+            google.recaptcha.enable=true
+            google.recaptcha.secret=6LdGRnsUAAAAAC7jyetaCtVrvandTAEL0LXe8yR0
+            google.recaptcha.url=https://www.google.com/recaptcha/api/siteverify
+
+            #Redis executor properties
+            redis.task.executor.core.pool.size=15
+            redis.task.executor.max.pool.size=30
+            redis.thread.group=Redis-TG
+            redis.thread.name=Redis-TH-
+
+            #Restricted states for delivery
+            enable.shipping.restricted.states=true
+            shipping.restricted.states=CA
+            enable.billing.restricted.states=true
+            billing.restricted.states=CA
+
+            # Store GCP Mysql details
+            store.table.name=XSTLOC_Test_Automate
+            spring.datasource.url=jdbc:mysql://10.105.36.36/academydb?useSSL=false
+            spring.datasource.username=root
+            spring.datasource.password=Academy@123!
+            store.yext.secret.key=f15e7f22819d48b79b411cc0fa866e8f
+            store.ent.id=10151
+            store.instore.page.static.url=<br><br><a href="/webapp/wcs/stores/servlet/InStoreServices?langId=-1&storeId=10151&catalogId=10051">View details</a>
+
+            #session cookie expiry moved from constant 
+            session.cookie.expiry=1800
+
+
+            #Algolia common configurations
+            algolia.app.id=8OU0J2F0DJ
+            algolia.write.key=3f1d24606e0980568703ea7e224bb1e9
+            algolia.stg.app.id=8OU0J2F0DJ
+            algolia.stg.write.key=3f1d24606e0980568703ea7e224bb1e9
+            algolia.connection.timeout=300
+            algolia.popular.search.index.name=${algolia.env}-popular-searches
+            algolia.analytics.key=8c5c7d60e22e4d8cc85786e41ee52b15
+            algolia.analytics.url=https://analytics.us.algolia.com/2/searches?index=${algolia.env}-products&limit=1000&orderBy=searchCount&direction=desc
+            algolia.product.search.index.name=${algolia.env}-products
+            algolia.product.category.index.name=${algolia.env}-category
+            algolia.product.search.brand.asc.index.name=${algolia.env}-products-brand
+            algolia.product.search.price.asc.index.name=${algolia.env}-products-price-asc
+            algolia.product.search.price.desc.index.name=${algolia.env}-products-price-desc
+            algolia.product.search.top.rated.index.name=${algolia.env}-products-toprated
+            algolia.product.search.top.seller.index.name=${algolia.env}-products-topseller
+            algolia.product.search.most.viewed.index.name=${algolia.env}-products-mostviewed
+            algolia.product.search.new.arrival.index.name=${algolia.env}-products-newarrival
+            algolia.inventory.index.name=${algolia.env}-inventory
+            algolia.sku.search.index.name=${algolia.env}-skus
+            algolia.unstructure.content.index.name=${algolia.env}-content
+            algolia.product.content.publish.asc.index.name=${algolia.env}-content-publish-asc
+            algolia.product.content.publish.dsc.index.name=${algolia.env}-content-publish-dsc
+            algolia.product.content.page.asc.index.name=${algolia.env}-content-page-asc
+            algolia.product.content.page.dsc.index.name=${algolia.env}-content-page-dsc
+            algolia.product.sitemap.category.index.name=${algolia.env}-category
+            algolia.active.rule.filter=active:'Y' AND invActive:'Y' AND (NOT ayHideInSearch:Y) AND catalogId:10051 AND (NOT facet_Deals:'Clearance' OR NOT facet_invStatus:0)
+            algolia.plp.delivery.method.home=(sth_oos:0)
+            algolia.plp.delivery.method.bopis=(inventory_pick:#### AND bopisFlag:'Y')
+            algolia.plp.delivery.method.bopisAndSts=(inventory_pick:#### OR inventory_sts:####) AND (shipToStoreFlag:Y OR bopisFlag:Y) AND (inventory_pick:#### OR shipToStoreFlag:Y) AND (inventory_sts:#### OR bopisFlag:Y )
+            algolia.plp.delivery.method.bopisAndStsAndStsfs=(inventory_pick:#### OR inventory_sts:#### OR stsfs_oos:0) AND (inventory_pick:#### OR shipToStoreFlag:Y OR stsfs_oos:0) AND (stsfs_oos:0 OR bopisFlag:Y OR inventory_sts:####) AND (bopisFlag:Y OR shipToStoreFlag:Y OR stsfs_oos:0) AND (inventory_pick:#### OR inventory_sts:#### OR shipToStoreFlag:S) AND (inventory_pick:#### OR shipToStoreFlag:Y OR shipToStoreFlag:S) AND (shipToStoreFlag:S OR bopisFlag:Y OR inventory_sts:####) AND (bopisFlag:Y OR shipToStoreFlag:Y OR shipToStoreFlag:S)
+            algolia.plp.delivery.method.homeAndBopis=(inventory_pick:#### OR sth_oos:0) AND (bopisFlag:Y OR sth_oos:0)
+            algolia.plp.delivery.method.homeAndBopisAndSts=(inventory_pick:#### OR inventory_sts:#### OR sth_oos:0) AND (shipToStoreFlag:Y OR bopisFlag:Y OR sth_oos:0) AND (inventory_pick:#### OR shipToStoreFlag:Y OR sth_oos:0) AND (inventory_sts:#### OR bopisFlag:Y OR sth_oos:0)
+            algolia.plp.delivery.method.homeAndBopisAndStsAndStsfs=(inventory_pick:#### OR inventory_sts:#### OR stsfs_oos:0 OR sth_oos:0) AND (inventory_pick:#### OR shipToStoreFlag:Y OR stsfs_oos:0 OR sth_oos:0) AND (stsfs_oos:0 OR sth_oos:0 OR bopisFlag:Y OR inventory_sts:####) AND (bopisFlag:Y OR shipToStoreFlag:Y OR stsfs_oos:0 OR sth_oos:0) AND (inventory_pick:#### OR inventory_sts:#### OR shipToStoreFlag:S OR sth_oos:0) AND (inventory_pick:#### OR shipToStoreFlag:Y OR shipToStoreFlag:S OR sth_oos:0) AND (shipToStoreFlag:S OR sth_oos:0 OR bopisFlag:Y OR inventory_sts:####) AND (bopisFlag:Y OR shipToStoreFlag:Y OR shipToStoreFlag:S OR sth_oos:0)
+            algolia.plp.delivery.method.bopisAndSts.sts3=(inventory_pick:#### OR inventory_sts:####) AND (shipToStoreFlag:Y OR shipToStoreFlag:B OR bopisFlag:Y) AND (inventory_pick:#### OR shipToStoreFlag:Y OR shipToStoreFlag:B) AND (inventory_sts:#### OR bopisFlag:Y)
+            algolia.plp.delivery.method.bopisAndStsAndStsfs.sts3=(inventory_pick:#### OR inventory_sts:#### OR stsfs_oos:0) AND (inventory_pick:#### OR shipToStoreFlag:B OR shipToStoreFlag:Y OR stsfs_oos:0) AND (stsfs_oos:0 OR bopisFlag:Y OR inventory_sts:####) AND (bopisFlag:Y OR shipToStoreFlag:B OR shipToStoreFlag:Y OR stsfs_oos:0) AND (inventory_pick:#### OR inventory_sts:#### OR shipToStoreFlag:B OR shipToStoreFlag:S) AND (inventory_pick:#### OR shipToStoreFlag:B OR shipToStoreFlag:Y OR shipToStoreFlag:S) AND (shipToStoreFlag:B OR shipToStoreFlag:S OR bopisFlag:Y OR inventory_sts:####) AND (bopisFlag:Y OR shipToStoreFlag:B OR shipToStoreFlag:Y OR shipToStoreFlag:S)
+            algolia.plp.delivery.method.homeAndBopisAndSts.sts3=(inventory_pick:#### OR inventory_sts:#### OR sth_oos:0) AND (shipToStoreFlag:Y OR shipToStoreFlag:B OR bopisFlag:Y OR sth_oos:0) AND (inventory_pick:#### OR shipToStoreFlag:Y OR shipToStoreFlag:B OR sth_oos:0) AND (inventory_sts:#### OR bopisFlag:Y OR sth_oos:0)
+            algolia.plp.delivery.method.homeAndBopisAndStsAndStsfs.sts3=(inventory_pick:#### OR inventory_sts:#### OR stsfs_oos:0 OR sth_oos:0) AND (inventory_pick:#### OR shipToStoreFlag:Y OR shipToStoreFlag:B OR stsfs_oos:0 OR sth_oos:0) AND (stsfs_oos:0 OR sth_oos:0 OR bopisFlag:Y OR inventory_sts:####) AND (bopisFlag:Y OR shipToStoreFlag:Y OR shipToStoreFlag:B OR stsfs_oos:0 OR sth_oos:0) AND (inventory_pick:#### OR inventory_sts:#### OR shipToStoreFlag:B OR shipToStoreFlag:S OR sth_oos:0) AND (inventory_pick:#### OR shipToStoreFlag:Y OR shipToStoreFlag:B OR shipToStoreFlag:S OR sth_oos:0) AND (shipToStoreFlag:B OR shipToStoreFlag:S OR sth_oos:0 OR bopisFlag:Y OR inventory_sts:####) AND (bopisFlag:Y OR shipToStoreFlag:Y OR shipToStoreFlag:B OR shipToStoreFlag:S OR sth_oos:0)
+            sts3Enabled=false
+
+
+            #Preview Mode staging Indexes
+            algolia.product.preview.search.index.name=${algolia.env.preview}-products
+            algolia.sku.preview.search.index.name=${algolia.env.preview}-skus
+            algolia.product.preview.category.index.name=${algolia.env.preview}-category
+            algolia.product.preview.search.brand.asc.index.name=${algolia.env.preview}-products-brand
+            algolia.product.preview.search.price.asc.index.name=${algolia.env.preview}-products-price-asc
+            algolia.product.preview.search.price.desc.index.name=${algolia.env.preview}-products-price-desc
+            algolia.product.preview.search.top.rated.index.name=${algolia.env.preview}-products-toprated
+            algolia.product.preview.search.top.seller.index.name=${algolia.env.preview}-products-topseller
+            algolia.product.preview.search.most.viewed.index.name=${algolia.env.preview}-products-mostviewed
+            algolia.product.preview.search.new.arrival.index.name=${algolia.env.preview}-products-newarrival
+            algolia.product.preview.sitemap.category.index.name=${algolia.env.preview}-category
+
+
+            #EGC Sterling API Details
+            aso.egc.sterling.apikey=c90fac3783b5be81ca498edc8a7aadf0
+            aso.egc.sterling.secret=f015442d412053a2cc8307e80d8d9f2fe5dc3559cd1091f8f833fabc30b30d9e
+
+            #Algolia facets to be removed
+            algolia.facets.remove=minProductPrice,maxProductPrice,facet_InvInStock
+
+            ##YantriksInventoryIntegration
+            yantriks.inventory.orgid=ACADEMY
+            yantriks.inventory.sellingchannel=ACADEMY.COM
+            yantriks.inventory.transactiontype=WCS
+            yantriks.inventory.segment=DEFAULT
+            yantriks.inventory.uom=EACH
+            yantriks.client.token=YANTRIKS-TOKEN
+            yantriks.client.servicename=yantriks
+            audience=saas-yantriks-academy-dev
+            privateKeyId=dd9e79448cd623663aaf838254a2da877bb054cd
+            privateKey=-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDWcCHD2uwyEV8q\n+Uif73GNzMZfJuUKO5y+E2r3s/mwOTN5VFQMJb9xWDucNWNSMscg/LHVrV2wrn9D\nE3/QDKeGPIyCpi9+yNqoGjotKLakTtW4tcXBUmeIDOEofB93qSgQSUpNCG7zpcST\n4gekZpaNpAUUfUUzhf51ZRTOuxfGQnRuPwug5lTHIQfRUU9jk281uPeI9KgpGvIo\nyZud1YWErVw8g8LhaXZOV5bYMeKMUeCdGptAX3e3n3IIWLQCKhVDjNpc5ZuGxDo2\nTFX4Yo+TcJyDNunsgJbUOACVabzNzU9ppnSlbte6N38HxahQfc+MY4rLygOlxz/r\n3RVSUbt9AgMBAAECggEAA5x4em45uLohf9LE41Sf9UMJOtmn1R1IjXbm6pb6/Hm/\ndn/yDmZQVrNQBa3B0ho4JO5nJvG4IzKSbWnAUZufnUYbGP7Sy/AhUTVn3LzTyT6T\n9iaxgYjxZLwldTi/OupRWhIx5cw05MuE3PdbKOyar8tJqUesHlWtAa3FxO7SVAIL\nQfhN0YEVuadKE/4+0b5HVstGEZOR30MAUIE7tWh6tczgs7D9wvUnzhibLEu2FRjR\nZZDbq27UyZqizx3uUO88NG8Z9VxrFK8cyHAR70xVZU/UrO/gGwW+2l9B0scw2X7B\npx8wIk0x4DMrgbRjBH8MnyFUdxAbA3ftgE/aU3pPwQKBgQD1+HgFKUdhXYMwFtHP\ne4MZco20iboR3KctEqo4YLKl0UPuF9rvXhfFp9JPuRe+QDOU4Vqt6EcetX5QpIVt\ntmcwuThn4i7B+Y1Dht0zxVIRpqpSRW97bixxjeajSpQr4zFCzYlRDMYtlIF5lrlp\nPPLCZ6AJGWZs4hYRGgPdBXOFkQKBgQDfLoO6+Nd+kYJhNjWMvnGoyPr4Q+TQjuXV\nvz6m5eC9ToezIi3c4Vto6xVp3CvqHxCmkgQk8hLiYPpMW9gzJvwTZP3WWCSdwtQe\nw1bE8iHh0yE4DFKEUiMnpO33JaQXcgHri8Jiupo+Ct79lZEQ3gYJd9CDOrkVvfv0\n2llD5gqxLQKBgHgIjxmFsW3UYqbfG/hyv+F1Q63s4D7DPVoDl8n3dnbxDoNsZM0X\nT+aHJVz+aJXRYtqutr/TcJGN5FyaTPrjXqwqV1pqyIKks8lWUTBohMpUWR3ZALRt\naYboxrq9NF3Oe0WsY+yHnVa0+BJL+aNfuOAiDbkjChbspfQmi+gaNuvhAoGBAI2C\nXsAkm+6CsJqW1qlg74xHsunLkr+ye4Rl+IG2bCNcMaqhV1cgBOendzJiCe4uuE4F\nc19BpjunpczYx2LXqylY9aH8zWrCZ+EBlnjV1inrxrpVBdUkh2nRp5j3Yu4Cubjy\nKtSS4M3J8s3zEcISJN3H/IvYphZlGeaMs+DbcZgZAoGAapITw9bqkhpabEwRasUE\nlc9FO26um+X/E9L4LQYfA8OeGThMJ4mU/pvwNTTy4WD+xEEYl3s3SXIWOPJBrYwx\nIk3dhdjRSn48jTy4Ykl3YFjrNRrJKD9W68WSmkwKaXsSu6tjFmIMTDtE5zk/1eTa\n+gLihXKYzp1jQyFZsyUYmFA=\n-----END PRIVATE KEY-----\n
+            issuer=academy-dev
+            timeToLive=60
+            yantriks.inventory.enable=false
+            yantriks.stsfs.enable=true
+            yantriks.inventory.endpoint=https://academy-dev-pfpa.yantriks.in/availability-services/availability/aggregator/v3.0
+            yantriks.token.exposed=false
+            yantriks.cached.inventory.location.endpoint=https://academy-dev-pfparc.yantriks.in/availability-services/location-atp-cache/aggregator/v3.0/
+            yantriks.cached.inventory.network.endpoint=https://academy-dev-pfparc.yantriks.in/availability-services/network-atp-cache/aggregator/v3.0/
+            yantriks.fallback.name=YANTRIKS-FALLBACK
+            retry.maxAttempts=2
+            retry.maxDelay=10
+            yantriks.light.version.batch.size=500
+            light.version.thread.pool.size=50
+            yantriks.fulfillment.stub.flag=false
+            yantriks.fulfillment.stub.thread.sleep.time=100
+
+
+            # Sub-Domain URL JSON for Categories Sitemap
+            categoriesSubDomainJSON={"data":[{"name":"This is Academy","seoURL":"http://corporate.academy.com/","categoryId":"","subCategories":[{"name":"About Us","categoryId":"","seoURL":"http://corporate.academy.com/"},{"name":"Investor Relations","categoryId":"","seoURL":"https://investors.academy.com/"},{"name":"Careers","categoryId":"","seoURL":"http://careers.academy.com/"},{"name":"Customer Care","categoryId":"","seoURL":"https://help.academy.com/"}]}]}
+
+            #Store Default Max Radius Search
+            store.default.max.radius=250
+            store.data.cloud.enabled=true
+
+            #Firestore properties
+            firestore.credentials = academy-firestore-nonprod.json
+
+            esp.listrak.email.htmlSelectors={PRODUCT_NAME_SELECTOR:'a#productName', PRODUCT_LINK_SELECTOR:'a', IMAGE_LINK_SELECTOR:'img', QUANTITY_SELECTOR:'td#quantity', UNIT_PRICE_SELECTOR:"td#unitPrice", SKU_SELECTOR:'td#sku', PICKUP_OR_ARRIVALDATE_SELECTOR:'td#pickUpDateOrEstimatedArrivalDate', ATTRIBUTE_SELECTOR:'table#attributes', ITEMS_HEADING_SELECTOR:'<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" role=\"presentation\" ><tr><td align=\"center\"><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" role=\"presentation\" ><tr><td style=\"background-color: #f6f6f6; padding: 20px 10px\"><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" role=\"presentation\" ><tr><td class=\"center\" style=\" font-family: Roboto, Arial, Helvetica, sans-serif; font-size: 14px; color: #555555; text-align: left; \" > Items</td><td class=\"hide\" align=\"right\"><table align=\"right\" width=\"500\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" role=\"presentation\" style=\"width: 500px\" ><tr><td width=\"20%\" style=\" font-family: Roboto, Arial, Helvetica, sans-serif; font-size: 14px; color: #575757; text-align: left; \" > Qty</td><td width=\"40%\" style=\" font-family: Roboto, Arial, Helvetica, sans-serif; font-size: 14px; color: #575757; text-align: left; \" > Unit Price</td><td width=\"40%\" style=\" font-family: Roboto, Arial, Helvetica, sans-serif; font-size: 14px; color: #575757; text-align: left; \" > sku</td><td width=\"40%\" style=\" font-family: Roboto, Arial, Helvetica, sans-serif; font-size: 14px; color: #575757; text-align: left; \" > pickUpDateOrEstimatedArrivalDate</td></tr></table></td></tr></table></td></tr></table>', ITEMS_HTML_SELECTOR:'<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" role=\"presentation\" ><tr><td class=\"pad-lr-10\" style=\"padding: 10px 10px 0\"><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" role=\"presentation\" ><tr><td><table class=\"full-width\" align=\"left\" width=\"100\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" role=\"presentation\" style=\" border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100px; \" ><tr><td class=\"cart-img\" align=\"center\"> <a href=\"\" title=\"Product\" target=\"_blank\" ><img src=\"\" width=\"100\" alt=\"Product\" border=\"0\" style=\"display: block\" /></a></td></tr></table><table class=\"full-width\" align=\"right\" width=\"470\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" role=\"presentation\" style=\" border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 470px; \" ><tr><td height=\"90\" class=\"pad-lr-10 height-auto\" style=\"height: 90px\" ><table class=\"full-width\" align=\"left\" width=\"230\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" role=\"presentation\" style=\" border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 230px; \" ><tr><td class=\"pad-t-20 pad-b-10 center\" style=\" font-family: Roboto, Arial, Helvetica, sans-serif; font-size: 14px; color: #575757; text-align: left; \" > <a id=\"productName\" href=\"\" title=\"Product\" target=\"_blank\" style=\"color: #575757; text-decoration: none\" ><strong style=\"font-weight: normal\" >productName</strong ></a ></td></tr></table><table class=\"full-width\" mn align=\"right\" width=\"500\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" role=\"presentation\" style=\" border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 500px; \" ><tr><td id=\"quantity\" class=\"label-data center\" width=\"20%\" style=\" font-family: Roboto, Arial, Helvetica, sans-serif; font-size: 14px; color: #575757; text-align: left; \" > quantity</td><td id=\"unitPrice\" class=\"label-data center\" width=\"40%\" style=\" font-family: Roboto, Arial, Helvetica, sans-serif; font-size: 14px; color: #575757; text-align: left; \" > unitPrice</td><td id=\"sku\" class=\"label-data center\" width=\"40%\" style=\" font-family: Roboto, Arial, Helvetica, sans-serif; font-size: 14px; color: #575757; text-align: left; \" > sku</td><td id=\"pickUpDateOrEstimatedArrivalDate\" class=\"label-data center\" width=\"40%\" style=\" font-family: Roboto, Arial, Helvetica, sans-serif; font-size: 14px; color: #575757; text-align: left; \" > pickUpDateOrEstimatedArrivalDate</td></tr></table><table id=\"attributes\"> testTable</table></td></tr></table><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" ><tr><td align=\"center\" style=\"padding: 10px 0 0\"><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" ><tr><td align=\"center\" style=\" height: 1px; background-color: #ececec; font-size: 0; line-height: 1; \" > &nbsp;</td></tr></table></td></tr></table></td></tr></table></td></tr></table>', ITEMS_HTML_FOOTER_SELECTOR:'</td></tr></table>'}
+            esp.listrak.email.segmentationFieldIds=\ENVIRONMENT:20222, \TX_BILLING_FIRST_NAME:20119, \TX_BILLING_LAST_NAME:20120, \TX_BILLING_STREET_ADDRESS_1:20121, \TX_BILLING_STREET_ADDRESS_2:20122, \TX_BILLING_CITY:20123, \TX_BILLING_STATE:20124, \TX_BILLING_ZIP:20125, \TX_BILLING_COUNTRY:20126, \TX_BILLING_PHONE:20127, \TX_SHIPPING_FIRST_NAME:20110, \TX_SHIPPING_LAST_NAME:20111, \TX_SHIPPING_STREET_ADDRESS_1:20112, \TX_SHIPPING_STREET_ADDRESS_2:20113, \TX_SHIPPING_CITY:20114, \TX_SHIPPING_STATE:20115, \TX_SHIPPING_ZIP:20116, \TX_SHIPPING_COUNTRY:20117, \TX_SHIPPING_PHONE:20118, \TX_ORDER_NUMBER:20128, \TX_TRACKING_NUMBER:20129, \TX_TRACKING_LINK:20130, \TX_ACCOUNT_LINK:20131, \TX_ORDER_REVIEW_LINK:20132, \TX_ORDER_DATE:20134, \TX_ESTIMATED_SHIP_DATE:20135, \TX_PURCHASED_ITEM_COUNT:20143, \TX_PAYMENT_METHOD:20136, \TX_PAYMENT_METHOD_DETAIL:20137, \TX_SUB_TOTAL:20138, \TX_TAX:20139, \TX_SHIPPING_METHOD:20133, \TX_SHIPPING_COST:20140, \TX_DISCOUNT:20141, \TX_GRAND_TOTAL:20142, \TX_CART_ITEMS:20149, \TX_TEMP_DATA:20528, \TX_STORE_PICKUP_ITEMS:21116, \TX_STORE_PICKUP_NAME:21119, \TX_STORE_PICKUP_PHONE_NUMBER:21120, \TX_STORE_PICKUP_ALTERNATE_NAME:21121, \TX_STORE_PICKUP_ALTERNATE_PHONE_NUMBER:21122, \TX_STORE_ADDRESS:21124, \TX_GIFT_CARD_APPLIED_AMOUNT:21134, \TX_GIFT_CARD_BALANCE:21327, \TX_GIFT_CARD_USED:21326, \TX_HOME_DELIVERY_ITEMS:21115, \TX_E_DELIVERY_ITEMS:21118, \TX_SPECIAL_ORDER_ITEMS:21117
+
+            #HystrixConfiguration
+            hystrix.command.yantriksInventory.execution.isolation.thread.timeoutInMilliseconds=2000
+            hystrix.command.yantriksInventory.circuitBreaker.requestVolumeThreshold=100
+            hystrix.command.yantriksInventory.circuitBreaker.errorThresholdPercentage=30
+            hystrix.command.yantriksInventory.circuitBreaker.sleepWindowInMilliseconds=5000
+            hystrix.command.yantriksInventory.metrics.rollingStats.timeInMilliseconds=20000
+            hystrix.command.yantriksInventory.metrics.rollingPercentile.timeInMilliseconds=20000
+            hystrix.command.yantriksInventory.metrics.healthSnapshot.intervalInMilliseconds=5000
+            hystrix.command.yantriksInventory.fallback.isolation.semaphore.maxConcurrentRequests=20
+
+            #jasypt encryption properties
+            jasypt.encryptor.algorithm=PBEWithMD5AndTripleDES
+            jasypt.encryptor.password=ecomdigital
+            jasypt.encryptor.poolsize=4
+            jasypt.encryptor.enabled=false
+
+            #jasypt clientId and secrets
+            ecom.digital.clientid.secretkey.map={'LWdLk/9Gd2hbhj9X8Yhov9Wf+ZgqCcBIGpnWjlB0xFQ=':'tgCgosGetfanSHHsB7HWseGbMFBTWXyZowhCFm8uC5Y=','t5mPYuydOPy/klfvaMLuWFg3vOgqKKb1RNVcK1dOX0ILtCsuqakNRg==':'tgCgosGetfanSHHsB7HWseGbMFBTWXyZowhCFm8uC5Y=','ci3dfI0wtZUnl31/43QPp8ki+CRSXCFJq8JaqLNehl0N38Ocpp7cJw==':'AhiHBZv8x4JTNosY/X0ZOZGKlBFRmPpEgQueW2hzsaA=','E+QryXXIZEFj75TnGPzVH5xZnl/Ce+d/':'jGLELw/XBGtE2IjOplPhYXYNRhNU1harEo8dN48pOdc=','1aP+XU6fWFbdm2Py9Bt+NNavfi+Aq8KtQEiApjUmgfg=':'S2z5jxF911+c2PbMRg2YhhJp0M6XC42y1YPksrClANM=','8xH+N6jA6h8ejAImgO6fC0QVsjLadI9k':'Benalc+SOE7CAGuatE8gDn8E8+co/wENjo2y5oGxaTs=','FkB70yG+7xWczprcgn/BKYSpd0RSZ0e8KTu7nmZvLo0=':'clpAshMGiewFa/ql34xYWdjC5WUgRf6WH3gax7xfWcA=','vCzPzsw9QzTtN+qMPch/ZJsd9Gg+BarPzM0NXImty3c=':'1rWnXR2kylYY5PD1AQdE/dlJi/ET2VrZuw9cXTEV884=','Ivoeh+agT48Gobl0LR2epxendrqtFjZ1':'FhzRYsxySLAao0/iFX6Kudkz/1fPoCYPjd08Biu8LLE=','GLAsGc50QtXKn+MKDygsLSVsxhwI/fhj':'fMYB1j0Tj/nhITDr3F1W8KqAnSEawidMiVyufcUi4UU=','5YTKQYuWup4oK0K8VQZHIKEYtAArgVzpqGtLWyF/Nis=':'4B2Gl3lniJwP7iWpAkQtxrMGKf/kqmxYhYt1G0vacjk=','5BvJtUeQHnU48UIGoOhosDCzKeQSN55H':'RGGNWhskAPb7vH/Zbmlk5/NWfrQKetNvstBjFfUoSX4=','Jm7bquVb1PIZZogq/d9z75icVf4E4jEKxEpC8PkE1Sw=':'on/wdbKsHPsxQHSmEl6N0hQTLR3us+eVysRSAnuAqP8=','pREOZLyEJ5KkmbZ8GHuHTpxvwixg4sBt':'Cbjb5oiJLbJLTB0g/D3ROS5daqGG2udYuMRaNtqPd2I=','a+wQ7vmSshjJWMsnYQLIcMlKsdfdn702':'SfKKpLF9iLzqN8L+ZP06sRf+xXjWN/YZvJmGzGYoZk8=','SH9qSHQUrlhjFb/PDNwdBpedtvvl0j3Y':'N4OSwm4X0tmBJxkdjq8QT02YXWD1ITH8sU3QNWo3V0w=','+l7I6Ed3J6Uy/tPTyWuzSvfQLl9LYXaolDkHbunrdFg=':'sofm7Z5pCwnitwy6/KPlYYnyKiHU+KpKQRwe/tCJy3Y=','ohYnR6y4Kqnkr1io2wrnIIscf/Fp3cHo':'NKuo/195qSQhBjl9svzbTyRsC+ALqqVJdzJma7vcbTU=','gZe8H6NKnKG/XstV+9NrkBbtsnIAjRG8IM9HhxU/hgc=':'tgCgosGetfanSHHsB7HWseGbMFBTWXyZowhCFm8uC5Y=','jIhRYdbiqBC7/Fwc68wdGyY9lU6pnAi5kQEIwZCaNQE=':'4zvQW7WWVfZbaklbvmIHUShBhwaMqgoZ/D2t51jfJJI=','CPSbKUXy7RK8doSKYuc82JPaRvNv4woGIdszgtR0iQE=':'E/r75aYksKG890xHLPNSVV59Dp6+CqmQGoVYeAWulLE=','66VSFZqWNLE8DKeoMjmk4rzAcnrPPmNMjUNoMbN0fFU=':'MuW3QWMwYbBrrI8XhYA+ntcVxDLZIHMu3s2lGxiZ43k=','jpUebFcHGQtkoh1P90Secsnw03NJpq4r3BN1f92rfHI=':'Oasd09v8i0Onlfty02956zFmwkV0v5XMwA8V78D0RJ8=','Sk1LRG3eU+T6OyJAcMsUr4jr23I88n46Fc7uJ8guNLfj4gIIEYKxpw==':'Md82RdHS0Ol/FDD3orTYpUsYE6LZGlFWoDg43c3HMi4=','jnHVTAPBPR7E0LyqC0M51rNMssvNyVUs':'kXNfBx2DGRKrpssafeeTlrmlSKir3m6ySjDVV5GO7WM=','OU038LS0S5QQK0IQSbvJ4Ise0+BKy/Z7ZoJ5WvyrQuM=':'lIWRO2Rq0tUM2aEUcaxw6NmkQrOQB4Mur+xfpiHJ4s0=','moG3jmngoEggNF070xQWmsuN3ivEOWEB':'4Py13cp8BnQyLppOTdITpG3Uhk+iB+r7En9uC8SzGh8=','wkUJZz2Uzmv/KSo0/XT/YEvDPGoPuB2H':'bHf/r+mHJPHjKlJQINziuMbvioku+HwhTX5HdnOBygI=','M+uzSKyOymcT8DBxK1mMJkLQpVbs95/tzGMXjnaO1Qg=':'dwbv5IVc7hQMuSCGcPQjbgjlPcT4dYzBf0GcgD/aE44=','aaQV3sK7M1c8sP7mq+zX32GREY2aFMpn':'js0Fy7/nCg/EABxg8DCBu+Qn/5iv78pLurTrSqn3HaE=','Z3DVm3IPdh/Td7gLIIkgRd1vCDhkSda/':'u+h6H7Df0EESwsOfllbdaF148lWdBKYwuihn+AE9NNU='}
+
+            #disable redis monitoring from health check
+            management.health.redis.enabled=false
+
+            server.max-http-header-size=20000
+
+            #store.stateCodeNamesMap
+            store.stateCodeNamesMap = {'AL':'Alabama','AK':'Alaska','AZ':'Arizona','AR':'Arkansas','CA':'California','CO':'Colorado','CT':'Connecticut','DC':'District of Columbia','DE': 'Delaware','FL':'Florida','GA':'Georgia','HI':'Hawaii','ID':'Idaho','IL':'Illinois','IN':'Indiana','IA':'Iowa','KS':'Kansas','KY':'Kentucky','LA':'Louisiana','ME':'Maine','MA': 'Massachusetts','MI':'Michigan','MN':'Minnesota','MS':'Mississippi','MO':'Missouri','MT':'Montana','NE':'Nebraska','NV':'Nevada','NH':'New Hampshire','NJ':'NewJersey','NM':'New Mexico','NY':'NewYork','NC':'North Carolina','ND':'NorthDakota','OH':'Ohio','OK':'Oklahoma','OR':'Oregon','PA':'Pennsylvania','RI':'RhodeIsland','SC':'South Carolina','SD':'South Dakota','TN':'Tennessee','TX':'Texas','UT':'Utah','VT':'Vermont','VA':'Virginia','WA':'Washington','WV':'WestVirginia','WI':'Wisconsin','WY':'Wyoming'}
+            product.variant.default.category.redirect=/browse/hot-deals
+            restructure.categoryUrlName.replacement=/c
+
+            #Manage Purchase perf improvement new command flag
+            wcsOrders.customQuery.enabled=true
+
+            #enableAlgoliaFetchingFacetConfigFromCategoryIndex
+            enableAlgoliaFetchingFacetConfig=false
+
+            #key to enable redis caching on store information
+            redis.cache.store.latlong.enable=false
+            stsStoreToStoreFlatDaysInTransit=6
+            stsStoreToStoreWeekendOffDays=
+            stsStoreToStoreHolidays=11/25/2021,11/26/2021,12/25/2021
+            stsStoretoStoreDispatchCutOffTime=14:00:00
+            IS_BOPIS_ENABLED=true
+            BOPIS_PICK_UP_TODAY_CUTOFF_SLA=-120
+            excludeHolidays=
+            excludeDays=Sat,Sun
+            STSCutOffTime=14
+            cutOffTime=14
+            payeezyAuthClientStubEnable=false 
+            payeezyAuthClientStubPublicKey=LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUF6NGFXN3IrOE1YdXlBaGg2Z0tsNAp3S1FkeWxtbDRENzVyMVhtZkI4VGczMklBcFZuWk4rT3hZUmo4REpxYmFKQWp4WFIyTGd4azZvajNFSlpuTVBBCksrcDlvT0JhdzFWYU9NWFhlaDRwUnN4TTUxd3pHNVBVaWd4UUFCcFBPd2IyM3ZVR1VXTkhUWkxBck1jcGlESEkKaklnR1AyWmpyRmp1NElJczllb1hYVEx0dUIxSFgraE1waVdNeEVEUUdlL3Z6SnVHekNyZlBLZjV0Ky96dVNSQQpvUHY1SGZ6U25yNHZlWkd5QjZZc3ZqR1BnWVZsY3ZjQTBiNnJYdm9HTU5udzF4cGh3R1VSTk9KaWMzdnAzQVNFCm5GNHZQVmFKbVQwQ3hZQ3JQOXB3WVlub2VuNzhxQUVKUzhCK2ZibVgwSHFLUlprd1JmdFNVc3B1TlRVbG1YMXMKNVFJREFRQUIKLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0t
+            payeezyAuthClientStubTokenid=0225900729801111
+            payeezyAuthClientStubResponseDelay=200
+            payeezyAuthClientStubBin=411111
+            payeezyAuthClientStubBrand=visa
+            payeezyAuthClientStubMonth=12
+            payeezyAuthClientStubYear=2030
+            shipmodeIdAndCodeMap={'10551':'UPS Ground','10552':'UPS 2 Day', '10553':'UPS Overnight','10554':'USPS Ground','10555':'WhiteGlove','10556':'PickupInStore','10557':'Express','10560':'Ship To Store','11356':'FEDX Ground','11357':'FEDX 2 Day','11358':'FEDX Overnight','11359':'FEDX Home','11360':'WhiteGloveThreshold','11361':'WhiteGloveROC','11362':'PickupInStore','11363':'SHIPNPICKUPINSTORE','11364':'EGiftCard','11365':'FreeGiftPromotion'}
+            shipping.sla.shipmodeId.bopis=11362
+            shipping.sla.shipmodeId.sts=11363
+
+            sfl.purge.days.limit = 180
+            sfl.purge.batchjob.size = 10
+
