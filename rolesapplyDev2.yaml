@@ -3,17 +3,17 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: dev2
-  name: role-api-dev2reader
+  name: role-api-dev2reader1
 rules:
   - apiGroups: [""] # "" indicates the core API group
-    resources: ["configmaps"]
+    resources: ["pods","configmaps"]
     verbs: ["get", "watch", "list"]
 ---
 # bind the role and the service account
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: rolebinding-api-dev2reader
+  name: rolebinding-api-dev2reader1
   namespace: dev2
 subjects:
   - kind: ServiceAccount
@@ -21,5 +21,5 @@ subjects:
     namespace: dev2
 roleRef:
   kind: Role #this must be Role or ClusterRole
-  name: role-api-dev2reader # this must match the name of the Role or ClusterRole you wish to bind to
+  name: role-api-dev2reader1 # this must match the name of the Role or ClusterRole you wish to bind to
   apiGroup: rbac.authorization.k8s.io
